@@ -5,6 +5,7 @@ namespace Lab1._1
     {
         public required int Start { get; init; }
         public required int End { get; init; }
+        
         public void Print()
         {
             for (int i = Start; i <= End; i++){
