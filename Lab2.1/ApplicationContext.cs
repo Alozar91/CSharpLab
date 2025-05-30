@@ -20,7 +20,7 @@ namespace Lab2._1
             string connectionString = Program.config.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connectionString);
             //optionsBuilder.LogTo(Console.WriteLine,LogLevel.Information);
-            //optionsBuilder.LogTo(s=>Debug.WriteLine(s));
+            optionsBuilder.LogTo(s=>Debug.WriteLine(s), LogLevel.Information);
 
         }
     }

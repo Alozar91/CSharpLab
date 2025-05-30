@@ -53,31 +53,31 @@ namespace Lab2._2
                     }
                 }
 
-                //Явная
-                Console.WriteLine("explicit load");
-                var result2 = db.Teachers
-                    .OrderBy(x => x.Id)
-                    .ToList();
-                foreach (var teacher in result2)
-                {
-                    Console.WriteLine($"{teacher.Id}. {teacher.Name} students:");
-                    db.Entry(teacher).Collection(t => t.Courses).Load();
-                    foreach (var course in teacher.Courses)
-                    {
-                        Console.WriteLine($"\t{course.Title}, Duration {course.Duration} students:");
-                        db.Entry(course).Collection(c => c.Students).Load();
-                        foreach (var student in course.Students)
-                        {
-                            Console.WriteLine($"\t\t{student.Id}.{student.Name}, Age {student.Age}");
-                        }
+                ////Явная
+                //Console.WriteLine("explicit load");
+                //var result2 = db.Teachers
+                //    .OrderBy(x => x.Id)
+                //    .ToList();
+                //foreach (var teacher in result2)
+                //{
+                //    Console.WriteLine($"{teacher.Id}. {teacher.Name} students:");
+                //    db.Entry(teacher).Collection(t => t.Courses).Load();
+                //    foreach (var course in teacher.Courses)
+                //    {
+                //        Console.WriteLine($"\t{course.Title}, Duration {course.Duration} students:");
+                //        db.Entry(course).Collection(c => c.Students).Load();
+                //        foreach (var student in course.Students)
+                //        {
+                //            Console.WriteLine($"\t\t{student.Id}.{student.Name}, Age {student.Age}");
+                //        }
 
-                    }
-                }
+                //    }
+                //}
                 //Жадная
                 Console.WriteLine("eager load");
                 var result3 = db.Teachers
                     .Include(t => t.Courses)
-                    .ThenInclude(c => c.Students)
+                    .ThenInclude(c=> c.Students)
                     .OrderBy(x => x.Id)
                 ;
                 foreach (var teacher in result3)

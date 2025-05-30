@@ -1,6 +1,6 @@
 ﻿
 
-namespace Lab2._2
+namespace Lab3._1
 {
     public class Teacher
     {

@@ -17,11 +17,19 @@ namespace Lab2._1
             {
                 db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
+
+                db.Courses.AddRange(
+                    new Course { Title = "C# Language", Duration = 40, Description = "C# Language" },
+                    new Course { Title = ".Net Client-Server", Duration = 40, Description = "Creating client server for .NET using C#" },
+                    new Course { Title = "Pattern", Duration = 24, Description = "OOP Pattern" },
+                    new Course { Title = "JavaScript", Duration = 24, Description = "JavaScript for web developers" }
+                    );
+                db.SaveChanges();
             }
 
             using (ApplicationContext db = new ApplicationContext())
             {
-                Course c = db.Courses.Where(x => x.Title == "B").FirstOrDefault();
+                Course c = db.Courses.Where(x => x.Title == "C# Language").FirstOrDefault();
                 if (c != null)
                 {
                     c.Duration= 6;
@@ -50,7 +58,7 @@ namespace Lab2._1
 
             using (ApplicationContext db = new ApplicationContext())
             {
-                Course c = db.Courses.Where(x => x.Title == "A").FirstOrDefault();
+                Course c = db.Courses.Where(x => x.Title == "Pattern").FirstOrDefault();
                 if (c != null)
                 {
                     db.Courses.Remove(c);
