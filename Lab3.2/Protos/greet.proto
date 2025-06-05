@@ -1,0 +1,45 @@
+syntax = "proto3";
+ 
+option csharp_namespace = "Lab3._2.Services";
+
+package GrpcDataService;
+ 
+import "google/protobuf/empty.proto";
+ 
+service PeopleService{
+
+  rpc ListPeople(google.protobuf.Empty) returns (ListReply);
+  rpc GetPerson(GetPersonRequest) returns (PersonReply);
+  rpc CreatePerson(CreatePersonRequest) returns (PersonReply);
+  rpc UpdatePerson(UpdatePersonRequest) returns (PersonReply);
+  rpc DeletePerson(DeletePersonRequest) returns (PersonReply);
+}
+ 
+message CreatePersonRequest{
+  string name=1;
+  int32 age = 2;
+}
+ 
+message GetPersonRequest{
+  int32 id =1;
+}
+ 
+message UpdatePersonRequest{
+  int32 id=1;
+  string name=2;
+  int32 age = 3;
+}
+ 
+message DeletePersonRequest{
+  int32 id =1;
+}
+ 
+message ListReply{
+  repeated PersonReply People = 1;
+}
+ 
+message PersonReply{
+  int32 id = 1;
+  string name=2;
+  int32 age = 3;
+}
